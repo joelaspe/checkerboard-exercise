@@ -13,27 +13,21 @@ function makeSquare(color) {
  
     container.appendChild(div);
 }
+
+function getRandomColor() {
+    //using the RGB model
+    const red = Math.floor(Math.random()*256);
+    const green = Math.floor(Math.random()*256);
+    const blue = Math.floor(Math.random()*256);
+    const rgb = `rgb(${red}, ${green}, ${blue})`;
+    return rgb;
+}
+
+
 // run the loop 64 times to get an 8x8 grid
-var isOdd = true;
-for(let i = 0; i < 8; i++)
+for(let i = 0; i < 64; i++)
 {
-    for(let j = 0; j < 8; j++)
-    {
-        if(isOdd) {
-            makeSquare("red");
-            isOdd = false;
-        } else {
-            makeSquare("black");
-            isOdd = true;
-        }
-    }
-    //making a new row, swap the isOdd variable because we need to 'repeat' a color
-    if(isOdd) {
-        isOdd = false;
-    } else {
-        isOdd = true;
-    }
-    
+  makeSquare(getRandomColor());
 }
 
 
