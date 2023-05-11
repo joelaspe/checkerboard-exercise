@@ -13,6 +13,11 @@ function makeSquare(color) {
  
     container.appendChild(div);
 }
+function clearSquares() {
+    const squaresList = document.querySelectorAll('div');
+    squaresList.forEach(div => document.body.removeChild(div));
+}
+
 
 function getRandomColor() {
     //using the RGB model
@@ -22,7 +27,7 @@ function getRandomColor() {
     const rgb = `rgb(${red}, ${green}, ${blue})`;
     return rgb;
 }
-
+/*
 var isOdd = false;
   
 for(let i = 0; i < 8; i++) {
@@ -37,11 +42,20 @@ for(let i = 0; i < 8; i++) {
     //making a new row, swap the isOdd variable because we need to 'repeat' a color
     isOdd = !isOdd;
 }    
-    
-    
-//makeSquare(getRandomColor());
+*/  
+function makeFlashingSquares() {
+    clearSquares();
+    for(let i = 0; i < 64; i++){
+        makeSquare(getRandomColor());
+    }
+}
+   
+makeFlashingSquares(); //needed for the initial load of the page
+
+setInterval(makeFlashingSquares, 2000);
 
 
+/*
 const gradient = document.createElement('div');
 gradient.style.height = "800px";
 gradient.style.width = "800px";
@@ -50,5 +64,5 @@ gradient.style.background = "linear-gradient(45deg, rgb(2,0,36), rgb(44,44,74), 
 gradient.style.position = "relative";
 gradient.style.bottom = "800px";
 document.body.appendChild(gradient);
-
+*/
 
